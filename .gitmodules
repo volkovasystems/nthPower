@@ -1,0 +1,3 @@
+[submodule "nthRoot"]
+	path = nthRoot
+	url = git@github.com:volkovasystems/nthRoot.git
