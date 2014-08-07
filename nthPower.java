@@ -24,6 +24,7 @@ public class nthPower{
 		BigDecimal baseExponent = new BigDecimal( exponent );
 
 		String[ ] baseExponentPartList = baseExponent.toString( ).split( "\\." );
+        System.out.println( "baseExponentPartListLength: " + baseExponentPartList.length );
 		if( baseExponentPartList.length > 1 ){
 
 			String exponentDecimal = baseExponentPartList[ 1 ];
@@ -37,13 +38,13 @@ public class nthPower{
 
 			BigDecimal phaseB = nthPower( value, exponentDecimal );
 
-			BigDecimal phaseC = nthRoot( phaseB, exponentFraction );
+			BigDecimal phaseC = nthRoot( phaseB.toString( ), exponentFraction, "2", 2 );
 
 			return phaseA.multiply( phaseC );
 
 		}else{
-
-			if( baseExponent.remainder( new BigDecimal( "2" ) ).compareTo( BigDecimal.ZERO ) != "0" ){
+            System.out.println( "baseExponent % 2 == 0: " + baseExponent.remainder( new BigDecimal( "2" ) ).compareTo( BigDecimal.ZERO )  );
+			if( baseExponent.remainder( new BigDecimal( "2" ) ).compareTo( BigDecimal.ZERO ) != 0 ){
 				return nthPower( value, baseExponent.subtract( BigDecimal.ONE ).toString( ) ).multiply( baseValue );
 
 			}else{
