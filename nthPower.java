@@ -9,26 +9,26 @@ import static nthRoot.nthRoot.nthRoot;
 		And always run with <package-name>.<class-name> format
 */
 public class nthPower{
-    private static final BigDecimal BIG_TWO = new BigDecimal( "2" );
+	private static final BigDecimal BIG_TWO = new BigDecimal( "2" );
 
 	public static void main( String... parameterList ){
 		String value = parameterList[ 0 ];
 
 		String exponent = parameterList[ 1 ];
 
-        try{
-            BigDecimal result = nthPower( value, exponent );
+		try{
+			BigDecimal result = nthPower( value, exponent );
 
-            System.out.print( result.toString( ) );
+			System.out.print( result.toString( ) );
 
-        }catch( Exception exception ){
-            System.err.print( exception.getMessage( ) );
-        }
+		}catch( Exception exception ){
+			System.err.print( exception.getMessage( ) );
+		}
 	}
 
 	public static final BigDecimal nthPower( String value, String exponent )
-        throws Exception
-    {
+		throws Exception
+	{
 		BigDecimal baseValue = new BigDecimal( value );
 		BigDecimal baseExponent = new BigDecimal( exponent );
 
@@ -52,19 +52,19 @@ public class nthPower{
 
 		}else{
 
-            if( baseExponent.compareTo( BigDecimal.ONE ) == 0 ){
-                return baseValue;
-            }
+			if( baseExponent.compareTo( BigDecimal.ONE ) == 0 ){
+				return baseValue;
+			}
 
-            if( baseExponent.compareTo( BigDecimal.ZERO ) == 0 ){
-                return BigDecimal.ONE;
-            }
+			if( baseExponent.compareTo( BigDecimal.ZERO ) == 0 ){
+				return BigDecimal.ONE;
+			}
 
-            if( baseExponent.compareTo( BigDecimal.ZERO ) < 0 ){
-                throw new Exception( "cannot raise to negative number exponents" );
-            }
+			if( baseExponent.compareTo( BigDecimal.ZERO ) < 0 ){
+				throw new Exception( "cannot raise to negative number exponents" );
+			}
 
-            if( baseExponent.remainder( BIG_TWO ).compareTo( BigDecimal.ZERO ) != 0 ){
+			if( baseExponent.remainder( BIG_TWO ).compareTo( BigDecimal.ZERO ) != 0 ){
 				return nthPower( value, baseExponent.subtract( BigDecimal.ONE ).toString( ) ).multiply( baseValue );
 
 			}else{
