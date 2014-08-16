@@ -70,23 +70,16 @@ public class nthPower{
 				return nthPower( value, baseExponent.subtract( BigDecimal.ONE ).toString( ) ).multiply( baseValue );
 			
 			}else{
-				
-				//BigDecimal result = baseValue;
-	
 				BigDecimal procedureCount = baseExponent.divide( BIG_TWO ); 
 				
 				BigDecimal count = BigDecimal.ZERO; 
 				BigDecimal result = BigDecimal.ONE;
 				
-				do{
-					//result = result.pow( BIG_TWO.intValue( ) );		
+				do{		
 					result = result.multiply( baseValue.pow( BIG_TWO.intValue( ) ) );					
 					count = count.add( BigDecimal.ONE );
 
 				}while( count.compareTo( procedureCount ) < 0 );
-				
-				//when result = baseValue
-				//divde the result by baseValue because  the result is equal to basevalue^exponent+1..AHAHAH
 				
 				return result;
 			}
