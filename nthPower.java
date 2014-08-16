@@ -33,8 +33,9 @@ public class nthPower{
 		BigDecimal baseExponent = new BigDecimal( exponent );
 
 		String[ ] baseExponentPartList = baseExponent.toString( ).split( "\\." );
+		
 		if( baseExponentPartList.length > 1 ){
-
+			
 			String exponentDecimal = baseExponentPartList[ 1 ];
 			String partialBaseExponent = baseExponentPartList[ 0 ];
 
@@ -51,12 +52,13 @@ public class nthPower{
 			return phaseA.multiply( phaseC );
 
 		}else{
-
+		
 			if( baseExponent.compareTo( BigDecimal.ONE ) == 0 ){
 				return baseValue;
 			}
 
 			if( baseExponent.compareTo( BigDecimal.ZERO ) == 0 ){
+			
 				return BigDecimal.ONE;
 			}
 
@@ -66,21 +68,27 @@ public class nthPower{
 
 			if( baseExponent.remainder( BIG_TWO ).compareTo( BigDecimal.ZERO ) != 0 ){
 				return nthPower( value, baseExponent.subtract( BigDecimal.ONE ).toString( ) ).multiply( baseValue );
-
+			
 			}else{
-				BigDecimal result = baseValue;
-
-				BigDecimal procedureCount = baseExponent.divide( BIG_TWO );
-				BigDecimal count = BigDecimal.ONE;
-
+				
+				//BigDecimal result = baseValue;
+	
+				BigDecimal procedureCount = baseExponent.divide( BIG_TWO ); 
+				
+				BigDecimal count = BigDecimal.ZERO; 
+				BigDecimal result = BigDecimal.ONE;
+				
 				do{
-					result = result.pow( BIG_TWO.intValue( ) );
-
+					//result = result.pow( BIG_TWO.intValue( ) );		
+					result = result.multiply( baseValue.pow( BIG_TWO.intValue( ) ) );					
 					count = count.add( BigDecimal.ONE );
 
 				}while( count.compareTo( procedureCount ) < 0 );
-
-				return result;    
+				
+				//when result = baseValue
+				//divde the result by baseValue because  the result is equal to basevalue^exponent+1..AHAHAH
+				
+				return result;
 			}
 		}
 	}
